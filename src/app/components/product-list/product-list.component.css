@@ -1,0 +1,15 @@
+:host {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 64px;
+    margin-top: 64px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+/*
+.card {
+    width: 350px;
+}
+*/
