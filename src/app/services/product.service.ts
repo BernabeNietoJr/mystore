@@ -26,7 +26,7 @@ export class ProductService {
 
   getProduct(id: number) : Product | undefined {
     this.returnProductArray();
-    return this.products.find(p => p.id === id);
+    return this.products!.find(p => p.id === id);
   }
   
 }

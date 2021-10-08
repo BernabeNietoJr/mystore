@@ -2,9 +2,9 @@ export class Product {
     id: number;
     name: string;
     price: number;
-    url: string;
+    url ?: string;
     description: string;
-    quantity?: number;
+    quantity ?: number;
 
     constructor() {
         this.id = 0;

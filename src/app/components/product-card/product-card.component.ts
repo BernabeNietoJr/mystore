@@ -9,7 +9,7 @@ import { Product } from 'src/app/models/Product';
 })
 export class ProductCardComponent implements OnInit {
   @Input() product: Product;
-  //@Output() getProductDetail: EventEmitter<Product> = new EventEmitter;
+  
 
   constructor() {
     this.product = {
