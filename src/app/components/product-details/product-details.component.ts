@@ -19,19 +19,25 @@ export class ProductDetailsComponent implements OnInit {
     quantity:1,
   } ;
   id: number = 0;
+  products: Product[] = [];
   
   constructor( 
     private activeRouter: ActivatedRoute,
-    private productService: ProductService) { 
-    //this.product 
-    //this.id = 0;
+    private productService: ProductService ) { 
+
+      this.activeRouter.paramMap.subscribe((params: ParamMap) => {
+        this.id  = Number(params.get('id'));
+        //this.product = this.productService.getProduct(this.id) as Product;
+      });
+    
   }
 
   ngOnInit(): void {
-    this.activeRouter.paramMap.subscribe((params: ParamMap) => {
-      this.id  = Number(params.get('id'));
-      this.product = this.productService.getProduct(this.id) as Product;
+    this.productService.getProducts().subscribe( (prod) => {
+      this.products = prod;
+      this.product = this.products!.find(p => p.id === this.id) as Product;
     });
+
   }
 
 }
