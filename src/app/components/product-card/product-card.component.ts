@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/Product';
 
 
@@ -9,7 +9,8 @@ import { Product } from 'src/app/models/Product';
 })
 export class ProductCardComponent implements OnInit {
   @Input() product: Product;
-  
+  quantities: number[] = [1,2,3,4,5,6,7,8,9,10];
+  quantity:number = 1;
 
   constructor() {
     this.product = {
@@ -28,5 +29,9 @@ export class ProductCardComponent implements OnInit {
   // displayProduct(product: Product) {
   //   this.getProductDetail.emit(product);
   // }
+
+  addToCart(quantity: number): void {
+    alert(`${quantity} Product added to Cart!`)
+  }
 
 }

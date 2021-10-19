@@ -10,8 +10,8 @@ export class CartService {
   constructor() { }
 
   //add a product to the cart
-  addToCart(product: Product):void {
-    this.items.push(product);
+  addToCart(item: Product):void {
+    this.items.push(item);
   }
 
   //get all product from the cart

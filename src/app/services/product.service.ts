@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+
 import { Product } from '../models/Product';
 
 @Injectable({
@@ -24,9 +25,4 @@ export class ProductService {
     return this.products;
   }
 
-  getProduct(id: number) : Product | undefined {
-    this.returnProductArray();
-    return this.products!.find(p => p.id === id);
-  }
-  
 }

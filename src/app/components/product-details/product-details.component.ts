@@ -1,7 +1,8 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Product } from 'src/app/models/Product';
 import { ProductService } from 'src/app/services/product.service';
+//import { }
 
 
 @Component({
@@ -20,14 +21,16 @@ export class ProductDetailsComponent implements OnInit {
   } ;
   id: number = 0;
   products: Product[] = [];
+  quantities: number[] = [1,2,3,4,5,6,7,8,9,10];
+  quantity: number = 0;
   
   constructor( 
     private activeRouter: ActivatedRoute,
-    private productService: ProductService ) { 
+    private productService: ProductService,
+    private router: Router ) { 
 
       this.activeRouter.paramMap.subscribe((params: ParamMap) => {
         this.id  = Number(params.get('id'));
-        //this.product = this.productService.getProduct(this.id) as Product;
       });
     
   }
@@ -37,7 +40,14 @@ export class ProductDetailsComponent implements OnInit {
       this.products = prod;
       this.product = this.products!.find(p => p.id === this.id) as Product;
     });
+  }
 
+  onBack(): void {
+    this.router.navigate(['/'])
+  }
+
+  addToCart(quantity: number): void {
+    alert(`${quantity} Product Added To Cart!`);
   }
 
 }
