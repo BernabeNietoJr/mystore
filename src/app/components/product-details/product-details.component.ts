@@ -22,7 +22,7 @@ export class ProductDetailsComponent implements OnInit {
   id: number = 0;
   products: Product[] = [];
   quantities: number[] = [1,2,3,4,5,6,7,8,9,10];
-  quantity: number = 0;
+  quantity: number = 1;
   
   constructor( 
     private activeRouter: ActivatedRoute,
@@ -46,8 +46,10 @@ export class ProductDetailsComponent implements OnInit {
     this.router.navigate(['/'])
   }
 
-  addToCart(quantity: number): void {
-    alert(`${quantity} Product Added To Cart!`);
+  addToCart(product: Product): void {
+    product.quantity = this.quantity;
+    product.amount = product.quantity * product.price;
+    alert(`${product.quantity}, ${product.price}, ${product.id}, ${product.amount}`);
   }
 
 }

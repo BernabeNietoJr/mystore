@@ -9,6 +9,8 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
+  quantities: number[] = [1,2,3,4,5,6,7,8,9,10];
+  quantity: number = 1;
   
   
   constructor(private productService: ProductService) { }
@@ -19,5 +21,12 @@ export class ProductListComponent implements OnInit {
       
     });
   }
+
+  addToCart(product: Product): void {
+    product.quantity = this.quantity;
+    product.amount = product.quantity * product.price;
+    alert(`${product.quantity}, ${product.price}, ${product.id}, ${product.amount}`)
+  }
+
 
 }
