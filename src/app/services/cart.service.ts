@@ -1,6 +1,6 @@
+import { elementEventFullName } from '@angular/compiler/src/view_compiler/view_compiler';
 import { Injectable } from '@angular/core';
 import { Product } from '../models/Product';
-//import lodash from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -18,19 +18,29 @@ export class CartService {
     if (this.items.length === 0 ) {
 
       this.items.push(item);
+      console.log("0 length quantity: "+ item.quantity?.toString());
       return true;
 
     }
     else {
 
-      let retBool: boolean = this.isProductFound(this.items, item);
-      
-      if(retBool === true) {
+      //let retBool: boolean = this.isProductFound(this.items, item);
+      //let isProduct: Product | undefined = this.items.find( el => { el.id === item.id } ) 
+      let isProduct = this.items.filter( el => el.id === item.id)
+      //let index:  number = this.items.findIndex( el => { el.id === item.id})
+
+      if(isProduct.length !== 0) {
+
+        let index = this.items.findIndex(el => item.id === el.id)
+        this.items[index].quantity = Number(this.items[index].quantity)  +  Number(item.quantity!);
+        console.log(this.items[index].quantity + " + index: " + index);
         return false;
+
       }
       else {
         
         this.items.push(item);
+        console.log("quantity: "+ item.quantity?.toString());
         return true;
 
       }
@@ -61,7 +71,7 @@ export class CartService {
       return true;
     else
       return false;
-      
+
   }
 
   //isProductFound(prodArr: Product[], id: number): boolean {
@@ -74,6 +84,10 @@ export class CartService {
     // return false;
 
   //}
+
+  // findCartItemByIndex(id: number): number {
+
+  // }
 
   getTotal(): number {
 

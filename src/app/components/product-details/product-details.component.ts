@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Product } from 'src/app/models/Product';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 //import { }
 
@@ -27,7 +28,8 @@ export class ProductDetailsComponent implements OnInit {
   constructor( 
     private activeRouter: ActivatedRoute,
     private productService: ProductService,
-    private router: Router ) { 
+    private router: Router,
+    private cartService: CartService ) { 
 
       this.activeRouter.paramMap.subscribe((params: ParamMap) => {
         this.id  = Number(params.get('id'));
@@ -47,9 +49,17 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToCart(product: Product): void {
-    product.quantity = this.quantity;
-    product.amount = product.quantity * product.price;
-    alert(`${product.quantity}, ${product.price}, ${product.id}, ${product.amount}`);
+    
+
+    if (this.cartService.addToCart(product) === false) {
+      alert(`Product Already in Cart!`);
+    }
+    else {
+      product.quantity = this.quantity;
+      product.amount = product.quantity * product.price;
+      alert(`Product Added To Cart`);
+    }
+    
   }
 
 }

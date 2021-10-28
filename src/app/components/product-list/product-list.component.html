@@ -2,9 +2,7 @@
 -->
 <ul *ngFor="let product of products">
     
-
-
-    <li class="card mb-4 form-group" *ngIf="product">
+  <li class="card mb-4 form-group" *ngIf="product">
       
         <a [routerLink]="['/product', product.id]"> <img src="{{ product.url }}" alt="{{ product.name }}" class="card-img-top"  /> </a>
      
@@ -12,13 +10,12 @@
             
              <h5 class="card-title">{{ product.name }}</h5>
             
-         
              <p>${{ product.price }}</p>
                
           <form (ngSubmit)="addToCart(product)">
 
-            <select [(ngModel)]="quantity"  class="form-control" name="quantity" id="quantity">
-                <option *ngFor="let quantity of quantities"  [value]="quantity" >{{ quantity }}</option>
+            <select [(ngModel)]="product.quantity"  name="quantity" id="quantity">
+              <option *ngFor="let quan of quantities"  [ngValue]="quan" >{{ quan }}</option>
             </select>
             <br />
             <div>
@@ -29,10 +26,6 @@
         
         </div>
      
-      
-
     </li>
  
-
-    
 </ul>

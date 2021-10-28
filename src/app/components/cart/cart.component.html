@@ -1,7 +1,70 @@
-<div class="container">
-    <div class="row">
-        <div class="col"><h1>Cart Items </h1></div>
-        <div class="col"><h1>Payment Form </h1></div>
+<div class="container" >
+    
+ <div class="row no-gutters" >
+
+      <div class="col-6" *ngIf="items">
+
+        <h2>Cart</h2>
+        <ul *ngFor="let product of items" >
+            <li>
+              <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="{{ product.url }}" alt="{{ product.name }}" class="card-img-top"  />
+                        </div>
+                    </div>
+        
+                    <div class="col-md-8">
+                      <div class="card-body" >
+        
+                        <h5 class="card-title">
+                            {{ product.name }}
+                        </h5>
+        
+                        <p class="card-text">
+                            Quantity: {{ product.quantity }}
+                        </p>
+    
+                        <p>Amount: ${{ product.amount }}</p>
+    
+                        <br />
+                      
+                        <div>
+                            <button  class="btn btn-primary" (click)="removeItem(product)">Remove to cart</button>
+                        </div>
+                      
+        
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </li>
+            
+        </ul>
+        <div *ngIf="total"><h2>Total: ${{total}} </h2></div>
+
     </div>
+    <ng-template #elseBlock><h2>Cart</h2></ng-template>
+
+    <div class="col-6 centering">
+        <h2>Payment Form</h2>
+        <form (ngSuybmit)="1" >
+            <input type="text" placeholder="Customer Name">
+            <br />
+            <br>
+            <input type="text" placeholder="Credit Card Number">
+            <br/>
+            <br>
+            <input type="text" placeholder="Expiry Date">
+            <br>
+            <br>
+            <button class="btn-success" type="submit">Pay Now</button>
+        </form>
+    </div>
+
+ </div> 
+    
     
 </div>
+   
