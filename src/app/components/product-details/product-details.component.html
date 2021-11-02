@@ -19,24 +19,26 @@
                         {{ product.description }}
                     </p>
 
-                    <p>${{ product.price }}</p>
+                    <p>{{ product.price | currency }}</p>
 
-                    <br />
+                    
                   <form (ngSubmit)="addToCart(product)">
                     <div class="card-text">
                     
-                        <select [(ngModel)]="quantity" name="quantity" id="quantity">
-                            <option *ngFor="let quantity of quantities"  [value]="quantity">{{ quantity }}</option>
-                        </select>
+                        <select [ngModel]="product.quantity" (ngModelChange)="onSelect($event)"  name="quantity" id="quantity">
+                            <option *ngFor="let quan of quantities"  [ngValue]="quan" >{{ quan }}</option>
+                          </select>
 
                     </div>
 
-                    <br />
+                    
     
                     <div>
                         <button type="submit" class="btn btn-primary">Add to cart</button>
                     </div>
+
                   </form>
+
                     <div>
                         <a class="card-link" (click)="onBack()" >&larr; Back to Product List</a>
                     </div>

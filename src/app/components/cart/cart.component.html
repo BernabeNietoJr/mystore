@@ -2,7 +2,7 @@
     
  <div class="row no-gutters" >
 
-      <div class="col-6" *ngIf="items">
+      <div class="col-6" *ngIf="items.length">
 
         <h2>Cart</h2>
         <ul *ngFor="let product of items" >
@@ -26,7 +26,7 @@
                             Quantity: {{ product.quantity }}
                         </p>
     
-                        <p>Amount: ${{ product.amount }}</p>
+                        <p>Amount: {{ product.amount | currency }}</p>
     
                         <br />
                       
@@ -42,12 +42,12 @@
             </li>
             
         </ul>
-        <div *ngIf="total"><h2>Total: ${{total}} </h2></div>
+        <div *ngIf="total"><h2>Total: {{ total | currency }} </h2></div>
 
     </div>
-    <ng-template #elseBlock><h2>Cart</h2></ng-template>
+    <ng-template #elseBlock><h1>Cart is Empty</h1></ng-template>
 
-    <div class="col-6 centering">
+    <div class="col-6 centering" *ngIf="items.length">
         <h2>Payment Form</h2>
         <form (ngSuybmit)="1" >
             <input type="text" placeholder="Customer Name">
@@ -57,6 +57,7 @@
             <br/>
             <br>
             <input type="text" placeholder="Expiry Date">
+            <input type="text" placeholder="Security Code">
             <br>
             <br>
             <button class="btn-success" type="submit">Pay Now</button>

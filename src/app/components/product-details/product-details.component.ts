@@ -3,7 +3,6 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Product } from 'src/app/models/Product';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
-//import { }
 
 
 @Component({
@@ -51,15 +50,22 @@ export class ProductDetailsComponent implements OnInit {
   addToCart(product: Product): void {
     
 
-    if (this.cartService.addToCart(product) === false) {
-      alert(`Product Already in Cart!`);
+    if (this.cartService.addToCart(product, this.quantity) === false) {
+      alert(`Quantity is updated!`);
     }
     else {
-      product.quantity = this.quantity;
-      product.amount = product.quantity * product.price;
+      //product.quantity = this.quantity;
+      //product.amount = product.quantity * product.price;
       alert(`Product Added To Cart`);
     }
     
+  }
+
+
+  onSelect(selectedQuantity: number){
+    
+    this.quantity = selectedQuantity;
+
   }
 
 }

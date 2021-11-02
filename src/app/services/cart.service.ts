@@ -13,21 +13,21 @@ export class CartService {
   //add a product to the cart
   //return false if product is already in the cart
   // true if not found in cart
-  addToCart(item: Product): boolean {
+  addToCart(item: Product, quantity: number): boolean {
+
+    item.quantity = quantity;
+    item.amount = item.price * item.quantity;
 
     if (this.items.length === 0 ) {
 
       this.items.push(item);
-      console.log("0 length quantity: "+ item.quantity?.toString());
+      console.log(`0 length quantity: ${item.quantity}`);
       return true;
 
     }
     else {
 
-      //let retBool: boolean = this.isProductFound(this.items, item);
-      //let isProduct: Product | undefined = this.items.find( el => { el.id === item.id } ) 
-      let isProduct = this.items.filter( el => el.id === item.id)
-      //let index:  number = this.items.findIndex( el => { el.id === item.id})
+      let isProduct = this.items.filter( el => el.id === item.id);
 
       if(isProduct.length !== 0) {
 
@@ -74,20 +74,6 @@ export class CartService {
 
   }
 
-  //isProductFound(prodArr: Product[], id: number): boolean {
-
-    // for( let x = 0; x < this.items.length; x++) {
-    //   if (prodArr[x].id = id) {
-    //     return true;
-    //   }
-    // }
-    // return false;
-
-  //}
-
-  // findCartItemByIndex(id: number): number {
-
-  // }
 
   getTotal(): number {
 

@@ -10,11 +10,11 @@
             
              <h5 class="card-title">{{ product.name }}</h5>
             
-             <p>${{ product.price }}</p>
+             <p>{{ product.price | currency }}</p>
                
           <form (ngSubmit)="addToCart(product)">
 
-            <select [(ngModel)]="product.quantity"  name="quantity" id="quantity">
+            <select [ngModel]="product.quantity" (ngModelChange)="onSelect($event)"  name="quantity" id="quantity">
               <option *ngFor="let quan of quantities"  [ngValue]="quan" >{{ quan }}</option>
             </select>
             <br />
