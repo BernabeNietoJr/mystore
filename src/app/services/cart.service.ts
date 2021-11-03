@@ -7,47 +7,54 @@ import { Product } from '../models/Product';
 })
 export class CartService {
   items: Product[] = [];
+  //quantity: number = 1;
 
   constructor() { }
 
-  //add a product to the cart
-  //return false if product is already in the cart
-  // true if not found in cart
-  addToCart(item: Product, quantity: number): boolean {
 
-    item.quantity = quantity;
-    item.amount = item.price * item.quantity;
+  addToCart(item: Product): void {
 
-    if (this.items.length === 0 ) {
+    // let cartSize: number = this.items.length;
 
-      this.items.push(item);
-      console.log(`0 length quantity: ${item.quantity}`);
-      return true;
+    // if (cartSize === 0) {
+    //   console.log(`cart service - item.quantity ${item.quantity}`)
 
-    }
-    else {
+    //   this.items.push(item);
+    //   alert('Item added to cart!')
 
-      let isProduct = this.items.filter( el => el.id === item.id);
+    // }
+    // else {
 
-      if(isProduct.length !== 0) {
+      let itemInCart = this.items.filter( el => el.id === item.id);
 
-        let index = this.items.findIndex(el => item.id === el.id)
-        this.items[index].quantity = Number(this.items[index].quantity)  +  Number(item.quantity!);
-        console.log(this.items[index].quantity + " + index: " + index);
-        return false;
+      //item found in cart so update amount & quantity
+      if (itemInCart.length !== 0 ) {
 
+        let index: number = this.items.findIndex(el => item.id === el.id)
+        let newQuantity: number = 0
+
+        newQuantity = Number(this.items[index].quantity) + Number(item.quantity);
+
+        this.items[index].quantity = newQuantity;
+        this.items[index].amount = (this.items[index].quantity!) * (this.items[index].price!);
+
+        console.log(`@cart service item.quantity: ${item.quantity} updated quantity: ${this.items[index].quantity} index ${index}`);
+
+         newQuantity = 0;
+
+        alert('Cart updated!')
       }
       else {
-        
+        console.log(`@ cart service - item.quantity ${item.quantity}`)
+
         this.items.push(item);
-        console.log("quantity: "+ item.quantity?.toString());
-        return true;
+        alert('Item added to cart!')
 
       }
-      
-    }
 
   }
+
+
 
   //get all product from the cart
   getItems(): Product[] {
@@ -65,14 +72,14 @@ export class CartService {
     return this.items;
   }
 
-  isProductFound(prodArr: Product[], prod: Product): boolean {
+  // isProductFound(prodArr: Product[], prod: Product): boolean {
 
-    if (prod === prodArr.find( (el) => { el.id === prod.id } ) )
-      return true;
-    else
-      return false;
+  //   if (prod === prodArr.find( (el) => { el.id === prod.id } ) )
+  //     return true;
+  //   else
+  //     return false;
 
-  }
+  // }
 
 
   getTotal(): number {
@@ -85,6 +92,10 @@ export class CartService {
     }
 
     return total;
+  }
+
+  getUpdatedQuantity(pastNumber:number, presentNumber:  number): number {
+    return (pastNumber + presentNumber)
   }
 
 }

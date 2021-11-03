@@ -47,15 +47,28 @@
     </div>
     <ng-template #elseBlock><h1>Cart is Empty</h1></ng-template>
 
-    <div class="col-6 centering" *ngIf="items.length">
+    <div class="col-6 centering margn" *ngIf="items.length">
         <h2>Payment Form</h2>
-        <form (ngSuybmit)="1" >
-            <input type="text" placeholder="Customer Name">
-            <br />
-            <br>
-            <input type="text" placeholder="Credit Card Number">
+        <form (ngSubmit)="1" >
+            <input type="text" id="name" name="name" required minlength="8" [(ngModel)]="creditCard.holderName" #name="ngModel" placeholder="Customer Name">
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+        
+                <div *ngIf="name.errors?.required">Customer Name is Required</div>
+                <div *ngIf="name.errors?.minlength">Customer Name must be at least 8 characters long</div>
+
+            </div>
+            
             <br/>
-            <br>
+            
+            <input type="text" id="cardNumber" name="cardNumber" required minlength="12" [(ngModel)]="creditCard.cardNumber" #cardNumber="ngModel" placeholder="Credit Card Number" >
+            <div *ngIf="cardNumber.invalid && ( cardNumber.dirty || cardNumber.touched )">
+                <div *ngIf="cardNumber.errors?.required">Credit Card Number is required</div>
+                <div *ngIf="cardNumber.errors?.minlength"></div>
+            </div>
+
+            <br/>
+            <br/>
+
             <input type="text" placeholder="Expiry Date">
             <input type="text" placeholder="Security Code">
             <br>

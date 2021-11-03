@@ -50,14 +50,14 @@ export class ProductDetailsComponent implements OnInit {
   addToCart(product: Product): void {
     
 
-    if (this.cartService.addToCart(product, this.quantity) === false) {
-      alert(`Quantity is updated!`);
-    }
-    else {
-      //product.quantity = this.quantity;
-      //product.amount = product.quantity * product.price;
-      alert(`Product Added To Cart`);
-    }
+    // if (this.cartService.addToCart(product) === false) {
+    //   alert(`Quantity is updated!`);
+    // }
+    // else {
+    //   //product.quantity = this.quantity;
+    //   //product.amount = product.quantity * product.price;
+    //   alert(`Product Added To Cart`);
+    // }
     
   }
 

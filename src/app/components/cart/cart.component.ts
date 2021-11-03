@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CreditCard } from 'src/app/models/CreditCard';
 import { Product } from 'src/app/models/Product';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -10,6 +11,13 @@ import { CartService } from 'src/app/services/cart.service';
 export class CartComponent implements OnInit {
   items: Product[] = [];
   total: number = 0;
+  name: string = '';
+  creditCard: CreditCard = {
+    cardNumber: '',
+    holderName: '',
+    securityCode: 0,
+    expiryDate: new Date,
+};
 
   constructor(private cartService: CartService) { }
 
