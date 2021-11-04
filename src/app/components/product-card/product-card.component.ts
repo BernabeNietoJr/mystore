@@ -20,6 +20,7 @@ export class ProductCardComponent implements OnInit {
       url:'',
       description:'',
       quantity:1,
+      amount:0,
     } 
    }
 

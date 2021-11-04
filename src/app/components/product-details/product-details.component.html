@@ -22,10 +22,10 @@
                     <p>{{ product.price | currency }}</p>
 
                     
-                  <form (ngSubmit)="addToCart(product)">
+                  <form (ngSubmit)="this.cartService.addToCart(product)">
                     <div class="card-text">
                     
-                        <select [ngModel]="product.quantity" (ngModelChange)="onSelect($event)"  name="quantity" id="quantity">
+                        <select [(ngModel)]="product.quantity" (ngModelChange)="onSelect($event)"  name="quantity" id="quantity">
                             <option *ngFor="let quan of quantities"  [ngValue]="quan" >{{ quan }}</option>
                           </select>
 

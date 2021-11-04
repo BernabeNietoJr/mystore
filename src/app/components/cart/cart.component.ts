@@ -19,7 +19,7 @@ export class CartComponent implements OnInit {
     expiryDate: new Date,
 };
 
-  constructor(private cartService: CartService) { }
+  constructor(public cartService: CartService) { }
 
   ngOnInit(): void {
     this.items = this.cartService.getItems();

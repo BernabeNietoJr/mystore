@@ -14,16 +14,12 @@ export class CartService {
 
   addToCart(item: Product): void {
 
-    // let cartSize: number = this.items.length;
+      if (item.quantity === 0  || item.quantity === undefined) {
+        alert("Item quantity is zero, please select proper quantity!")
+        return;
+      }
 
-    // if (cartSize === 0) {
-    //   console.log(`cart service - item.quantity ${item.quantity}`)
-
-    //   this.items.push(item);
-    //   alert('Item added to cart!')
-
-    // }
-    // else {
+      item.amount = item.price * item.quantity;
 
       let itemInCart = this.items.filter( el => el.id === item.id);
 
@@ -31,20 +27,28 @@ export class CartService {
       if (itemInCart.length !== 0 ) {
 
         let index: number = this.items.findIndex(el => item.id === el.id)
-        let newQuantity: number = 0
 
-        newQuantity = Number(this.items[index].quantity) + Number(item.quantity);
+        let newQuantity: number = Number(this.items[index].quantity!);
+
+        newQuantity = Number(newQuantity) + (Number(item.quantity));
+
+        if (newQuantity > 10) {
+          alert('Maximum of 10 quantities per order!');
+          newQuantity = 10;
+        }
 
         this.items[index].quantity = newQuantity;
         this.items[index].amount = (this.items[index].quantity!) * (this.items[index].price!);
 
         console.log(`@cart service item.quantity: ${item.quantity} updated quantity: ${this.items[index].quantity} index ${index}`);
 
-         newQuantity = 0;
-
         alert('Cart updated!')
+
       }
+
+      //item not found in cart to add to cart
       else {
+
         console.log(`@ cart service - item.quantity ${item.quantity}`)
 
         this.items.push(item);

@@ -18,6 +18,7 @@ export class ProductDetailsComponent implements OnInit {
     url:'',
     description:'',
     quantity:1,
+    amount:0,
   } ;
   id: number = 0;
   products: Product[] = [];
@@ -28,7 +29,7 @@ export class ProductDetailsComponent implements OnInit {
     private activeRouter: ActivatedRoute,
     private productService: ProductService,
     private router: Router,
-    private cartService: CartService ) { 
+    public cartService: CartService ) { 
 
       this.activeRouter.paramMap.subscribe((params: ParamMap) => {
         this.id  = Number(params.get('id'));
@@ -47,19 +48,7 @@ export class ProductDetailsComponent implements OnInit {
     this.router.navigate(['/'])
   }
 
-  addToCart(product: Product): void {
-    
-
-    // if (this.cartService.addToCart(product) === false) {
-    //   alert(`Quantity is updated!`);
-    // }
-    // else {
-    //   //product.quantity = this.quantity;
-    //   //product.amount = product.quantity * product.price;
-    //   alert(`Product Added To Cart`);
-    // }
-    
-  }
+  
 
 
   onSelect(selectedQuantity: number){
