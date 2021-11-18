@@ -17,12 +17,12 @@
             <select [(ngModel)]="product.quantity" name="quantity" id="quantity" required >
               <option *ngFor="let quan of quantities"  [ngValue]="quan" >{{ quan }}</option>
             </select>
-            {{ product.quantity }}
-            <br />
+            
+            
             <div>
               <button (click)="this.cartService.addToCart(product)" class="btn btn-primary" >Add to cart</button>
             </div>
-             {{ product | json}}
+            
             
           </form>
         

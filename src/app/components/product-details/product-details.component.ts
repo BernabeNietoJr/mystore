@@ -26,6 +26,7 @@ export class ProductDetailsComponent implements OnInit {
   quantity: number = 1;
   
   constructor( 
+    
     private activeRouter: ActivatedRoute,
     private productService: ProductService,
     private router: Router,
@@ -47,9 +48,6 @@ export class ProductDetailsComponent implements OnInit {
   onBack(): void {
     this.router.navigate(['/'])
   }
-
-  
-
 
   onSelect(selectedQuantity: number){
     

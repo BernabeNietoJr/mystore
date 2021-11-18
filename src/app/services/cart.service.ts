@@ -51,7 +51,7 @@ export class CartService {
 
         console.log(`@ cart service - item.quantity ${item.quantity}`)
 
-        this.items.push(item);
+        this.items.push(JSON.parse(JSON.stringify(item)));
         alert('Item added to cart!')
 
       }

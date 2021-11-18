@@ -11,6 +11,8 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
+import { PaymentConfirmationComponent } from './components/payment-confirmation/payment-confirmation.component';
+
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { ProductCardComponent } from './components/product-card/product-card.com
     ProductDetailsComponent,
     NavBarComponent,
     CartComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    PaymentConfirmationComponent
   ],
   imports: [
     BrowserModule,
