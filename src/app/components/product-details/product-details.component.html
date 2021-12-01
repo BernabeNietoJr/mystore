@@ -26,7 +26,7 @@
                   <form>
                     <div class="card-text">
                     
-                        <select [(ngModel)]="product.quantity"  name="quantity" id="quantity">
+                        <select [(ngModel)]="quantity"  (ngModelChange)="OnSelect(quantity)" name="quantity" id="quantity">
                             <option *ngFor="let quan of quantities"  [ngValue]="quan" >{{ quan }}</option>
                         </select>
 

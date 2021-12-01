@@ -31,7 +31,7 @@
            
       <form>
 
-        <select [(ngModel)]="product.quantity" name="quantity" id="quantity" required >
+        <select [(ngModel)]="quantity" (ngModelChange)="OnSelect(quantity)" name="quantity" id="quantity" required >
           <option *ngFor="let quan of quantities"  [ngValue]="quan" >{{ quan }}</option>
         </select>
         

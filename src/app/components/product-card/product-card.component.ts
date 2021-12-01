@@ -14,7 +14,7 @@ export class ProductCardComponent implements OnInit {
   @Output() addCartItemEvent: EventEmitter<Product> = new EventEmitter();
   products: Product[] = [];
   quantities: number[] = [1,2,3,4,5,6,7,8,9,10];
-  quantity:number = 1;
+  quantity:number = 0;
 
   constructor() {
     this.product = {
@@ -34,6 +34,10 @@ export class ProductCardComponent implements OnInit {
 
   addItemToCart(prod: Product): void {
     this.addCartItemEvent.emit(prod);
+  }
+
+  OnSelect(selectedQuantity: number){
+    this.product.quantity = selectedQuantity;
   }
 
 }

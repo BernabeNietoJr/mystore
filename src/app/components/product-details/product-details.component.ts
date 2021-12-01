@@ -27,7 +27,7 @@ export class ProductDetailsComponent implements OnInit {
   id: number = 0;
   products: Product[] = [];
   quantities: number[] = [1,2,3,4,5,6,7,8,9,10];
-  quantity: number = 1;
+  quantity: number = 0;
   
   constructor( 
     
@@ -53,9 +53,9 @@ export class ProductDetailsComponent implements OnInit {
     this.router.navigate(['/'])
   }
 
-  onSelect(selectedQuantity: number){
+  OnSelect(selectedQuantity: number){
     
-    this.quantity = selectedQuantity;
+    this.product.quantity = selectedQuantity;
 
   }
 
