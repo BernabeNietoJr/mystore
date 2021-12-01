@@ -45,6 +45,7 @@ export class CartComponent implements OnInit {
     if(this.items.length === 0)
       this.total = 0
     
+    alert('Item successfully remove from cart!')
   }
 
   isResetForm() {

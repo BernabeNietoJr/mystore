@@ -1,4 +1,4 @@
-<div class="card mb-4 form-group" >
+<!-- <div class="card mb-4 form-group" >
    <a [routerLink]="['/product', product.id]"> <img src="{{ product.url }}" alt="{{ product.name }}" class="card-img-top"  /> </a>
     
     <div class="card-body">
@@ -17,4 +17,32 @@
             <button class="btn btn-primary" (click)="addToCart(quantity)">Add to cart</button>
         </div>
     </div>
+</div> -->
+
+<div class="card mb-4 form-group" >
+
+    <a [routerLink]="['/product', product.id]"> <img src="{{ product.url }}" alt="{{ product.name }}" class="card-img-top"  /> </a>
+     
+    <div class="card-body">
+        
+         <h5 class="card-title">{{ product.name }}</h5>
+        
+         <p>{{ product.price | currency }}</p>
+           
+      <form>
+
+        <select [(ngModel)]="product.quantity" name="quantity" id="quantity" required >
+          <option *ngFor="let quan of quantities"  [ngValue]="quan" >{{ quan }}</option>
+        </select>
+        
+        
+        <div>
+          <button (click)="addItemToCart(product)" class="btn btn-primary" >Add to cart</button>
+        </div>
+        
+        
+      </form>
+    
+    </div>
+
 </div>

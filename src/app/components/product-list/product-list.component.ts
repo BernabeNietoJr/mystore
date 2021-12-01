@@ -11,12 +11,12 @@ import { ProductService } from 'src/app/services/product.service';
 
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
-  quantities: number[] = [1,2,3,4,5,6,7,8,9,10];
+  //quantities: number[] = [1,2,3,4,5,6,7,8,9,10];
   
   
   
   
-  constructor(private productService: ProductService, public cartService: CartService) { }
+  constructor( private productService: ProductService, public cartService: CartService ) { }
 
   ngOnInit(): void {
 
@@ -26,5 +26,8 @@ export class ProductListComponent implements OnInit {
 
   }
 
+  addEmittedProduct(prod: Product): void {
+    this.cartService.addToCart(prod)
+  }
 
 }

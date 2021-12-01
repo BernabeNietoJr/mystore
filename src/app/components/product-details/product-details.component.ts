@@ -10,7 +10,10 @@ import { ProductService } from 'src/app/services/product.service';
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css']
 })
+
 export class ProductDetailsComponent implements OnInit {
+  
+
   product: Product = {
     id: 0,
     name: '',
@@ -19,7 +22,8 @@ export class ProductDetailsComponent implements OnInit {
     description:'',
     quantity:1,
     amount:0,
-  } ;
+  };
+
   id: number = 0;
   products: Product[] = [];
   quantities: number[] = [1,2,3,4,5,6,7,8,9,10];
@@ -52,6 +56,17 @@ export class ProductDetailsComponent implements OnInit {
   onSelect(selectedQuantity: number){
     
     this.quantity = selectedQuantity;
+
+  }
+
+  // addToCart(prod: Product) {
+  //   this.addCartItem.emit(prod);
+  // }
+
+  addProduct(prod: Product):void {
+
+    //this.addCartItem.emit(prod);
+    this.cartService.addToCart(prod);
 
   }
 

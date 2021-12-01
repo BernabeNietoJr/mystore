@@ -71,7 +71,7 @@
 
                         <label for="">Card Number:</label>
                         <br />
-                        <input type="text" id="cardNumber" pattern= "\b[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}\b" name="cardNumber" required minlength="16" maxlength="20" [(ngModel)]="creditCard.cardNumber" #cardNumber="ngModel" placeholder="Credit Card Number" >
+                        <input type="text" id="cardNumber" pattern="[0-9]{16}"  name="cardNumber" required minlength="16" maxlength="16" [(ngModel)]="creditCard.cardNumber" #cardNumber="ngModel" placeholder="Credit Card Number" >
                         <ng-container *ngIf="cardNumber.errors &&  cardNumber.dirty && cardNumber.touched  ">
                             <div *ngIf="cardNumber.errors?.required">Credit Card Number is required</div>
                             <div *ngIf="cardNumber.errors?.minlength">Card Number is 16 digit long</div>
@@ -106,7 +106,7 @@
                         <div *ngIf="securityCode.errors?.minlength">Security code length is three digit</div>
                         <div *ngIf="securityCode.errors?.pattern">Only digits please</div>
                     </ng-container>
-                    {{ creditCardForm.valid }}
+                    
                 </div>
 
             </div>

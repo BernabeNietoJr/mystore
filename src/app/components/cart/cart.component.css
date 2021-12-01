@@ -2,8 +2,10 @@
     width: 175px;
 }
 
-
-
 .div_pad {
     padding-left: 160px;
+}
+
+ng-container div {
+    color: #bb3e03;
 }

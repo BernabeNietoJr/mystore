@@ -1,6 +1,10 @@
-# MyStore
+# MyStore is a Ecommerce app for showcasing products and selling them online. It is written in Angular 12 and shows individual product with price, description, image of the product and a button to add them to a shopping cart. Once a customer is satisfied with the product(s) on the cart, he/she can purchase the item(s) by inputing his/her name and credit card detail.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.5.
+
+## Installing dependencies
+
+Run `npm install` to install dependencies found in package.json.
 
 ## Development server
 
